@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Sistema de Verificación Vehicular{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Verificación Vehicular para un Futuro Más Limpio</h1>
+        <p>
+            La verificación vehicular es un proceso obligatorio que tiene como objetivo reducir 
+            las emisiones contaminantes y proteger el medio ambiente. ¡Haz tu parte y agenda tu cita ahora!
+        </p>
+        <a href="#" class="btn-primary">Agendar Cita</a>
+    </div>
+</section>
+
+<section class="benefits">
+    <h2>¿Por qué es importante verificar tu vehículo?</h2>
+    <div class="benefit-cards">
+        <div class="card">
+            <img src="{% static 'img/emisiones.webp' %}" alt="Reducción de Emisiones" class="benefit-img">
+            <h3>Reducción de Emisiones</h3>
+            <p>Contribuye a mantener la calidad del aire reduciendo gases contaminantes.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'img/verificacion.webp' %}" alt="Evita Multas" class="benefit-img">
+            <h3>Evita Multas</h3>
+            <p>Al mantener tu vehículo verificado, evitas sanciones y multas.</p>
+        </div>
+        <div class="card">
+            <img src="{% static 'img/resultados.webp' %}" alt="Protección del Motor" class="benefit-img">
+            <h3>Protección del Motor</h3>
+            <p>Un auto verificado garantiza un mejor desempeño y mayor durabilidad.</p>
+        </div>
+    </div>
+</section>
+
+<section class="how-to">
+    <h2>¿Cómo funciona el proceso?</h2>
+    <div class="process">
+        <img src="{% static 'img/verificacion.webp' %}" alt="Proceso de Verificación" class="process-img">
+        <ol>
+            <li>Regístrate o inicia sesión.</li>
+            <li>Agenda tu cita en el verificentro más cercano.</li>
+            <li>Acude con tu vehículo el día y hora programados.</li>
+            <li>Obtén tu certificado de verificación.</li>
+        </ol>
+    </div>
+</section>
+
+<section class="faq">
+    <h2>Preguntas Frecuentes</h2>
+    <details>
+        <summary>¿Qué documentos necesito para la verificación?</summary>
+        <p>Debes presentar la tarjeta de circulación y comprobante de pago.</p>
+    </details>
+    <details>
+        <summary>¿Qué pasa si no verifico a tiempo?</summary>
+        <p>Puedes recibir multas y no podrás circular en zonas restringidas.</p>
+    </details>
+    <details>
+        <summary>¿Cuándo debo verificar mi auto?</summary>
+        <p>El calendario de verificación está disponible en nuestro sitio web.</p>
+    </details>
+</section>
+
+{% endblock %}

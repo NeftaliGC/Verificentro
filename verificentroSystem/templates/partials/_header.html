@@ -1,0 +1,23 @@
+<!-- templates/partials/_header.html -->
+{% load static %}
+
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="{% static 'img/logo.jpg' %}" alt="Logo Sistema de Verificación Vehicular">
+            <h1>Sistema de Verificación Vehicular</h1>
+        </div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Información</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="/login"><button class="btn login-btn">Login</button></a>
+            <button class="btn appointment-btn">Agendar Cita</button>
+        </div>
+    </div>
+</header>

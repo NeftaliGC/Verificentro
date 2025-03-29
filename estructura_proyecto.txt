@@ -1,0 +1,195 @@
+----------Estrucutura de archivos----------
+    Verificentro
+    ¦   .gitignore
+    ¦   db.sqlite3
+    ¦   estructura_proyecto.txt
+    ¦   manage.py
+    ¦   README.md
+    ¦   
+    +---modules
+    ¦   ¦   __init__.py
+    ¦   ¦   
+    ¦   +---inicio
+    ¦   ¦   ¦   admin.py
+    ¦   ¦   ¦   apps.py
+    ¦   ¦   ¦   models.py
+    ¦   ¦   ¦   tests.py
+    ¦   ¦   ¦   views.py
+    ¦   ¦   ¦   __init__.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---migrations
+    ¦   ¦   ¦       __init__.py
+    ¦   ¦           
+    ¦   +---modulo_citas
+    ¦   ¦   ¦   admin.py
+    ¦   ¦   ¦   apps.py
+    ¦   ¦   ¦   models.py
+    ¦   ¦   ¦   tests.py
+    ¦   ¦   ¦   views.py
+    ¦   ¦   ¦   __init__.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---migrations
+    ¦   ¦           __init__.py
+    ¦   ¦           
+    ¦   +---modulo_finanzas
+    ¦   ¦   ¦   admin.py
+    ¦   ¦   ¦   apps.py
+    ¦   ¦   ¦   models.py
+    ¦   ¦   ¦   tests.py
+    ¦   ¦   ¦   views.py
+    ¦   ¦   ¦   __init__.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---migrations
+    ¦   ¦           __init__.py
+    ¦   ¦           
+    ¦   +---modulo_gobierno
+    ¦   ¦   ¦   admin.py
+    ¦   ¦   ¦   apps.py
+    ¦   ¦   ¦   models.py
+    ¦   ¦   ¦   tests.py
+    ¦   ¦   ¦   views.py
+    ¦   ¦   ¦   __init__.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---migrations
+    ¦   ¦           __init__.py
+    ¦   ¦           
+    ¦   +---modulo_pagos
+    ¦   ¦   ¦   admin.py
+    ¦   ¦   ¦   apps.py
+    ¦   ¦   ¦   models.py
+    ¦   ¦   ¦   tests.py
+    ¦   ¦   ¦   views.py
+    ¦   ¦   ¦   __init__.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---migrations
+    ¦   ¦           __init__.py
+    ¦   ¦           
+    ¦   +---modulo_regulaciones
+    ¦   ¦   ¦   admin.py
+    ¦   ¦   ¦   apps.py
+    ¦   ¦   ¦   models.py
+    ¦   ¦   ¦   tests.py
+    ¦   ¦   ¦   views.py
+    ¦   ¦   ¦   __init__.py
+    ¦   ¦   ¦   
+    ¦   ¦   +---migrations
+    ¦   ¦           __init__.py
+    ¦   ¦           
+    +---venv
+    ¦           
+    +---verificentroSystem
+        ¦   asgi.py
+        ¦   settings.py
+        ¦   urls.py
+        ¦   wsgi.py
+        ¦   __init__.py
+        ¦   
+        +---static
+        ¦   +---css
+        ¦   ¦       styles.css
+        ¦   ¦       
+        ¦   +---img
+        ¦   ¦       emisiones.webp
+        ¦   ¦       logo.jpg
+        ¦   ¦       logo.webp
+        ¦   ¦       resultados.webp
+        ¦   ¦       verificacion.webp
+        ¦   ¦       
+        ¦   +---js
+        +---templates
+        ¦   ¦   base.html
+        ¦   ¦   home.html
+        ¦   ¦   login.html
+        ¦   ¦   
+        ¦   +---partials
+        ¦           _footer.html
+        ¦           _header.html
+
+
+----------Estrucutura de Base de datos----------
+    Puedes visualizar el codigo en https://dbdiagram.io
+
+    // Base de datos para el sistema de Verificentro
+
+    Table Vehiculos {
+        placa string [PK]
+        propietario string
+        tipo string
+        modelo string
+        clase string
+        combustible string
+        cilindros int
+    }
+
+    Table Usuarios {
+        id_usuario string [PK]
+        nombre string
+        correo string
+        contrasena string
+        rol string // Cliente, Trabajador
+    }
+
+    Table Citas {
+        id_cita string [PK]
+        id_usuario string [ref: > Usuarios.id_usuario]
+        placa string [ref: > Vehiculos.placa]
+        fecha datetime
+        estado string // Pendiente, Aprobada, Cancelada
+    }
+
+    Table Trabajador {
+        id_trabajador string [PK]
+        id_usuario string [ref: > Usuarios.id_usuario]
+        rol string // Técnico, Revisor
+    }
+
+    Table Pagos {
+        id_pago string [PK]
+        id_cita string [ref: > Citas.id_cita]
+        monto decimal
+        fecha_pago datetime
+        estado string // Aprobado, Rechazado
+    }
+
+    Table Regulaciones {
+        id_regulacion string [PK]
+        metodo string
+        limite_HO int
+        limite_CO int
+        limite_NO int
+        limite_O2 int
+        dilucion int
+        factor_lambda decimal
+        fecha_inicio_verificacion date
+        fecha_fin_verificacion date
+    }
+
+    Table Resultados {
+        id_resultado string [PK]
+        id_cita string [ref: > Citas.id_cita]
+        HO int
+        CO int
+        NO int
+        O2 int
+        dilucion int
+        factor_lambda decimal
+        resultado string // Aprobado, Rechazado
+        fecha datetime
+    }
+
+    Table Reportes {
+        id_reporte string [PK]
+        id_resultado string [ref: > Resultados.id_resultado]
+        fecha_generacion datetime
+        contenido text
+    }
+
+    Table Multas {
+        id_multa string [PK]
+        id_usuario string [ref: > Usuarios.id_usuario]
+        placa string [ref: > Vehiculos.placa]
+        monto decimal
+        motivo string // No verificar a tiempo, etc.
+        fecha_imposicion datetime
+        estado string // Pendiente, Pagada
+    }
