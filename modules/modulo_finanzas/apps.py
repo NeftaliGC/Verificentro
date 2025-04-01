@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
-
 class ModuloFinanzasConfig(AppConfig):
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'modulo_finanzas'
+    name = 'modules.modulo_finanzas'  # Namespace completo
+    label = 'modulo_finanzas'        # Opcional: nombre corto para referencias
