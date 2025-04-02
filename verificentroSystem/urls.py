@@ -17,9 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from modules.inicio import views
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('login/', views.login, name='login'),
+
+    path('admin/', admin.site.urls),
+    
+    path('finanzas/', include('modules.modulo_finanzas.urls')),  
 ]

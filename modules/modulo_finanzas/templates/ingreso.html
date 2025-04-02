@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Ingreso de Placa - Finanzas{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Por favor ingrese su placa</h2>
+    <form method="post" action="{% url 'modulo_finanzas:verificar_placa' %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="text" class="form-control" name="placa" placeholder="Ej: ABC123" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Verificar</button>
+    </form>
+</div>
+{% endblock %}
