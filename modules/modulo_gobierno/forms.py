@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
+import re
 from .models import Usuario
 import re
 
@@ -14,14 +15,14 @@ class RegistroUsuarioForm(UserCreationForm):
     acepto_terminos = forms.BooleanField(required=True, label="Acepto los términos y condiciones")
     
     class Meta:
-        model = Usuario  # Se asocia el formulario con el modelo Usuario
+        model = Usuario
         fields = [
             'username', 'email', 'first_name', 'last_name',
             'fecha_nacimiento', 'rfc', 'curp', 'password1', 'password2',
             'acepto_terminos'
         ]
         widgets = {
-            'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),  # Muestra un selector de fecha
+            'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),
         }
         labels = {
             'first_name': 'Nombre(s)',
