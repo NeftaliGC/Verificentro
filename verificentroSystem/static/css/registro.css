@@ -1,0 +1,164 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegura que el body ocupe toda la altura */
+}
+
+/* Contenedor principal */
+.registro-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Centra el formulario en la página */
+    flex-grow: 1; /* Permite que el formulario crezca, pero no sobrepase */
+}
+
+/* Título */
+.registro-title {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+/* Estilo del formulario */
+.registro-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo de los campos */
+.registro-form .form-group {
+    margin-bottom: 15px;
+}
+
+/*Nombres*/
+.registro-form .form-group label {
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.registro-form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.registro-form .form-control:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Errores de validación */
+.registro-form .form-errors {
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 5px;
+}
+
+/* Checkbox y label */
+.registro-form .checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.registro-form .checkbox-group label {
+    font-size: 14px;
+    color: #333;
+    margin-left: 5px;
+}
+
+.registro-form .checkbox-group input {
+    margin-right: 5px;
+}
+
+/* Botón de submit */
+.registro-form .btn-submit {
+    background-color: #388e3c;
+    color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.registro-form .btn-submit:hover {
+    background-color: #388e3c;
+}
+
+/* Enlace de login */
+.registro-form .login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.registro-form .login-link a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.registro-form .login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividad */
+@media screen and (max-width: 600px) {
+    .registro-container {
+        padding: 15px;
+    }
+
+    .registro-title {
+        font-size: 20px;
+    }
+
+    .registro-form .form-control {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .registro-form .btn-submit {
+        font-size: 14px;
+    }
+}
+
+/* Estilo para el header y footer */
+header, footer {
+    background-color: #00796b;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Se asegura de que el contenido se distribuya bien */
+}
+
+/* Agrega un pequeño margen al pie de página */
+footer {
+    margin-top: 20px;
+}

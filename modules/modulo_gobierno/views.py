@@ -3,10 +3,12 @@ from django.contrib.auth import login
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+import os
 from .models import Usuario, SolicitudValidacion
 from .forms import RegistroUsuarioForm
 from .services import validar_con_gobierno
 import json
+
 
 def registro_usuario(request):
     if request.method == 'POST':
@@ -43,11 +45,12 @@ def registro_usuario(request):
                 solicitud.rechazar(resultado, resultado.get('motivo'))
                 enviar_notificacion(usuario, aprobado=False, motivo=resultado.get('motivo'))
                 messages.error(request, f"Registro rechazado: {resultado.get('motivo')}")
-                return redirect('registro')
+                return redirect('registro-gobierno')  # Cambiado a tu nombre de URL
     else:
         form = RegistroUsuarioForm()
-    
-    return render(request, 'registro/registro.html', {'form': form})
+
+    return render(request, 'registro.html',{'form':form})
+
 
 def enviar_notificacion(usuario, aprobado, motivo=None):
     asunto = "Resultado de validación de registro"
