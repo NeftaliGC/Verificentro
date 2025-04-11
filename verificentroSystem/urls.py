@@ -26,5 +26,7 @@ urlpatterns = [
 
     # 🔗 Finanzas
     path('finanzas/', include('modules.modulo_finanzas.urls')),
+    # 🔗 Pagos
+    path('pagos/', include('modules.modulo_pagos.urls')),
 ]
 
