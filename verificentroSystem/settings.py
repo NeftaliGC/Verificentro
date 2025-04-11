@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'django_filters',
     'modules.inicio.apps.InicioConfig',
+    'modules.modulo_finanzas.apps.ModuloFinanzasConfig',
 ]
 
 MIDDLEWARE = [
