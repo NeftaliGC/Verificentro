@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+</head>
+<body>
+        <div>
+            <img class="header_logo" src="{% static 'imagenes/gobierno-edomex.jpeg' %}" alt="">
+        </div>
+        <h1 class="label_titulo morado">Cancelacion Verificación Vehicular</h1>
+        <div>
+            <img class="header_logo" src="{% static 'imagenes/El_Poder_de_Servir.jpeg' %}" alt="">
+        </div>
+    </header>
+    <h3>Capture los datos que se le solicitan a continuación. Verifique el numero de cita que se le fue enviado via email <br>En caso de cancelar 24 horas antes de la fecha, se le realizara una multa</h3>
+    <section class="appointment ap_morado">
+        <div class="ap__title-container">
+            <h2 class="ap__title">Cancelar de Cita</h2>
+        </div>
+        <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            <div class="ap__form-container">
+                <div class="ap__form">
+                    <label>Numero de Cita:</label>
+                    <input type="number" name="placa" placeholder="123456789" required>
+                </div>
+                
+                <div class="ap__form">
+                    <label>Correo electrónico:</label>
+                    <input type="email" name="correo" placeholder="juan123@gmail.com" required>
+                </div>
+            </div>
+            <div class="ap__form">
+                <button type="button" onclick="cancelarCita()">Siguiente</button>
+            </div>
+        </form>
+    </section>
+    <script>
+        function cancelarCita() {
+            const numeroCita = document.querySelector("input[name='placa']").value;
+            const correo = document.querySelector("input[name='correo']").value;
+    
+            if (numeroCita && correo) {
+                alert(`Cita con número ${numeroCita} ha sido cancelada.`);
+                alert("Correo de confirmación de cancelación enviado.");
+    
+                // Redirigir a la página principal
+                window.location.href = "{% url 'index' %}";
+            } else {
+                alert("Por favor, complete todos los campos.");
+            }
+        }
+    </script>
+</body>
+</html>
