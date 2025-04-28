@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from modules.inicio import views
+from modules.modulo_regulaciones import views as regulaciones_views
+
 
 urlpatterns = [
 
@@ -27,19 +29,18 @@ urlpatterns = [
     path('registro/', views.registro, name='registro'),
 
     # Normativas
-    path('nueva-normativa/', views.nueva_normativa, name='nueva_normativa'),      
-    path('editar-normativa/<int:pk>/', views.editar_normativa, name='editar_normativa'),
-    path('eliminar-normativa/<int:pk>/', views.eliminar_normativa, name='eliminar_normativa'),
-    path('listar_normativas/', views.listar_normativas, name='listar_normativas'),
+    path('nueva-normativa/', regulaciones_views.nueva_normativa, name='nueva_normativa'),
+    path('editar-normativa/<int:pk>/', regulaciones_views.editar_normativa, name='editar_normativa'),
+    path('eliminar-normativa/<int:pk>/', regulaciones_views.eliminar_normativa, name='eliminar_normativa'),
+    path('listar_normativas/', regulaciones_views.listar_normativas, name='listar_normativas'),
 
     # Reportes
-    path('reportes/', views.reportes, name='reportes'),
-    path('reporte_aprobados/', views.reporte_vehiculos_aprobados, name='reporte_aprobados'),
-    path('reporte_rechazados/', views.reporte_vehiculos_rechazados, name='reporte_rechazados'),
-    path('reporte-multas-generadas/', views.reporte_multas_generadas, name='reporte_multas_generadas'),
-
+    path('reportes/', regulaciones_views.reportes, name='reportes'),
+    path('reporte_aprobados/', regulaciones_views.reporte_vehiculos_aprobados, name='reporte_aprobados'),
+    path('reporte_rechazados/', regulaciones_views.reporte_vehiculos_rechazados, name='reporte_rechazados'),
+    path('reporte-multas-generadas/', regulaciones_views.reporte_multas_generadas, name='reporte_multas_generadas'),
 
     # Verificación vehicular
-    path('verificacion/', views.verificacion_vehicular, name='verificacion_vehicular'),
+    path('verificacion/', regulaciones_views.verificacion_vehicular, name='verificacion_vehicular'),
 
 ]
