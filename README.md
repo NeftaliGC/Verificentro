@@ -132,6 +132,7 @@ Este proyecto es colaborativo y sigue ciertas reglas para mantener un código li
     ```sh
     python manage.py runserver
     ```
+
 ### 📢 Comunicación
     Usa GitHub Issues para reportar errores o solicitar nuevas funcionalidades
 

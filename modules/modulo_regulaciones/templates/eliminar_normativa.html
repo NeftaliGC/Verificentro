@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eliminar Normativa</title>
+  <link rel="stylesheet" href="{% static 'css/stylesheet-seleccion.css' %}" />
+</head>
+<body>
+
+  <header class="header">
+    <div>
+      <img class="header_logo" src="{% static 'imagenes/gobierno-edomex.jpeg' %}" alt="Logo Gobierno" />
+    </div>
+    <h1 class="label_titulo">Eliminar Normativa</h1>
+    <div>
+      <img class="header_logo" src="{% static 'imagenes/El_Poder_de_Servir.jpeg' %}" alt="Logo Poder Servir" />
+    </div>
+  </header>
+
+  <h3>¿Estás seguro de que deseas eliminar la normativa "<strong>{{ normativa.nombre }}</strong>"?</h3>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'listar_normativas' %}"><button type="button">Cancelar</button></a>
+  </form>
+</body>
+</html>
