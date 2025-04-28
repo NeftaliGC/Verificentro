@@ -74,6 +74,7 @@ WSGI_APPLICATION = 'verificentroSystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#Conexion postgresql
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
