@@ -32,8 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    #aplicaciones
-    'modules.modulo_regulaciones',   
+    #modulos
+    'modules.modulo_regulaciones',
+    #otras apps   
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'verificentroSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verificentro_db',
+        'NAME': 'verificentro2',
         'USER': 'ramiro',
         'PASSWORD': 'ramiro54',  
         'HOST': 'localhost',

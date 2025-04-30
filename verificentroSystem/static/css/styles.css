@@ -9,7 +9,7 @@ body {
 
 /* Encabezado */
 header {
-    background-color: #00796b; /* Color verde relacionado con el medio ambiente */
+    background-color: #791e00; /* Rojo oscuro */
     color: white;
     padding: 10px 0;
 }
@@ -58,7 +58,7 @@ header .navigation ul li a {
 }
 
 header .navigation ul li a:hover {
-    color: #004d40;
+    color: #ff0000; /* Rojo al pasar el ratón */
 }
 
 /* Estilo de los botones */
@@ -77,12 +77,12 @@ header .btn {
 }
 
 header .login-btn {
-    background-color: #0288d1; /* Azul para el login */
+    background-color: #d10000; /* Rojo para el login */
     color: white;
 }
 
 header .appointment-btn {
-    background-color: #388e3c; /* Verde para agendar cita */
+    background-color: #8e3838; /* Rojo oscuro para agendar cita */
     color: white;
 }
 
@@ -92,7 +92,7 @@ header .btn:hover {
 
 /* Footer */
 footer {
-    background-color: #00796b;
+    background-color: #793400;
     color: white;
     text-align: center;
     padding: 10px;
@@ -128,7 +128,7 @@ main {
 }
 
 .btn-primary {
-    background-color: #388e3c;
+    background-color: #d10000; /* Botón rojo */
     color: white;
     padding: 12px 24px;
     border: none;
@@ -138,13 +138,13 @@ main {
 }
 
 .btn-primary:hover {
-    background-color: #2e7d32;
+    background-color: #a30000;
 }
 
 /* Beneficios */
 .benefits {
     padding: 50px 20px;
-    background-color: #f4f4f4;
+    background-color: #ffffff; /* Blanco */
     text-align: center;
 }
 
@@ -175,7 +175,7 @@ main {
 .how-to {
     padding: 40px 20px;
     text-align: center;
-    background-color: #e8f5e9;
+    background-color: #fff0f0; /* Blanco rosado suave */
 }
 
 .process {
@@ -202,7 +202,7 @@ main {
 .faq {
     padding: 50px 20px;
     text-align: center;
-    background-color: #f1f8e9;
+    background-color: #ffecec; /* Fondo muy claro rojizo */
 }
 
 .faq details {
@@ -214,8 +214,6 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
-
 
 /* Estilos para el formulario de login */
 .login {
@@ -270,13 +268,13 @@ form {
 }
 
 .btn-primary {
-    background-color: #388e3c;
+    background-color: #d10000;
     color: white;
     border: none;
 }
 
 .btn-primary:hover {
-    background-color: #2e7d32;
+    background-color: #a30000;
 }
 
 .btn-secondary {

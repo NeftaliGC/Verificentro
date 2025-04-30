@@ -27,6 +27,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('login/', views.login, name='login'),
     path('registro/', views.registro, name='registro'),
+    path('panel-admin/', regulaciones_views.panel_admin, name='panel_admin'),
 
     # Normativas
     path('nueva-normativa/', regulaciones_views.nueva_normativa, name='nueva_normativa'),
