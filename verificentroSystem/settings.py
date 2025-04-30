@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'verificentroSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verificentro_db',
+        'NAME': 'verificentro2',
         'USER': 'ramiro',
         'PASSWORD': 'ramiro54',  
         'HOST': 'localhost',
