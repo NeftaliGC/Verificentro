@@ -18,15 +18,22 @@ from django.contrib import admin
 from django.urls import path
 from modules.inicio import views
 from modules.modulo_regulaciones import views as regulaciones_views
+from modules.inicio import views as inicio_views
 
 
 urlpatterns = [
 
-    # Rutas principales
+    # ======================= Rutas principales =======================
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('login/', views.login, name='login'),
-    path('registro/', views.registro, name='registro'),
+    path('', inicio_views.home, name='home'),
+    path('login/', inicio_views.login, name='login'),
+    path('registro/', inicio_views.registro, name='registro'),
+
+    # ======================= INICIO =======================
+    path('registrar-usuario/', inicio_views.registrar_usuario, name='registrar_usuario'),
+
+    
+    # ======================= Modulo de regulaciones =======================  
     path('panel-admin/', regulaciones_views.panel_admin, name='panel_admin'),
 
     # Normativas
@@ -43,5 +50,7 @@ urlpatterns = [
 
     # Verificación vehicular
     path('verificacion/', regulaciones_views.verificacion_vehicular, name='verificacion_vehicular'),
+
+    # ======================= Modulo de gobierno =======================
 
 ]
