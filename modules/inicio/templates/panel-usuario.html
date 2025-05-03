@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel del Usuario{% endblock %}
+
+{% block content %}
+<h2>Bienvenido, {{ request.session.usuario_nombre }}</h2>
+<p>Este es tu panel personal.</p>
+<a href="{% url 'logout' %}">Cerrar sesión</a>
+{% endblock %}

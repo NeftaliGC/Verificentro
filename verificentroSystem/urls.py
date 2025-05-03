@@ -26,11 +26,17 @@ urlpatterns = [
     # ======================= Rutas principales =======================
     path('admin/', admin.site.urls),
     path('', inicio_views.home, name='home'),
-    path('login/', inicio_views.login, name='login'),
+    path('login/', inicio_views.login_usuario, name='login'),  # <- apunta al nuevo nombre
     path('registro/', inicio_views.registro, name='registro'),
 
     # ======================= INICIO =======================
     path('registrar-usuario/', inicio_views.registrar_usuario, name='registrar_usuario'),
+    path('panel-usuario/', inicio_views.panel_usuario, name='panel_usuario'),
+    path('logout/', inicio_views.logout, name='logout'),
+    
+
+
+
 
     
     # ======================= Modulo de regulaciones =======================  
