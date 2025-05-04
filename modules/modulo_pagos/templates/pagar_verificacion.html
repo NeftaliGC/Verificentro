@@ -45,7 +45,7 @@
 
 <div class="pagar-container">
 
-    <h3>Información de pago:</h3>
+    <h3 id="info-pago">Información de pago:</h3>
     <div class="pago-informacion-container">
         <p class="divisor">-------</p>
         
@@ -96,6 +96,9 @@
 <div class="pagar-container">
     <button type="button" id="continuar-btn" class="btn btn-primary">Continuar</button>
 </div>
+{% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/pago_informacion.js' %}"></script>
 {% endblock %}
 
