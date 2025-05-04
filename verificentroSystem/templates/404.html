@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Error 404 - Sistema de Verificación Vehicular{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/404.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Error 404 - {% block tipe_error %}No encontrado{% endblock %}</h2>
+<div class="error-container">
+    <img src="{% static 'img/404.webp' %}" alt="Error 404" class="error-imagen">
+    <p>Lo sentimos, la página que buscas no está disponible.</p>
+    {% block redireccionamiento %}
+    <a href="/" class="btn-regresar">Volver a inicio</a>
+    {% endblock %}
+</div>
+{% endblock %}

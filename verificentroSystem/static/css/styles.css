@@ -46,8 +46,9 @@ header .navigation ul {
 }
 
 header .navigation ul li {
-    display: inline;
+    display: inline-block;
     margin-right: 1rem;
+    position: relative; /* Asegura la posición del submenú */
 }
 
 header .navigation ul li a {
@@ -89,6 +90,40 @@ header .appointment-btn {
 header .btn:hover {
     opacity: 0.8;
 }
+
+/* Estilos para el menú desplegable */
+header .dropdown-menu {
+    opacity: 0; /* Ocultar el submenú por defecto */
+    pointer-events: none; /* Deshabilitar interacción con el submenú */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-header);
+    border: 1px solid var(--color-secundario);
+    border-radius: 1rem;
+    min-width: 160px;
+    transition: opacity 0.3s ease; /* Transición suave para la visibilidad */
+    flex-direction: column;
+}
+
+header .dropdown:hover .dropdown-menu {
+    opacity: 1; /* Mostrar el submenú al pasar el cursor */
+    pointer-events: auto; /* Habilitar interacción con el submenú */
+}
+
+header .dropdown-menu li {
+    padding: 10px;
+}
+
+header .dropdown-menu li a {
+    color: black;
+}
+
+header .dropdown-menu li a:hover {
+    color: var(--color-alerta);
+}
+
+
 
 /* Footer */
 footer {
@@ -231,7 +266,7 @@ form {
     background-color: var(--fondo-tarjeta);
     width: 60%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 3rem;
     border: 1px solid var(--borde-tarjeta);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
