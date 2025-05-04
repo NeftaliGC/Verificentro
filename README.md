@@ -139,3 +139,6 @@ Este proyecto es colaborativo y sigue ciertas reglas para mantener un código li
     Para dudas, utiliza el grupo de comunicación del equipo
 
 ## 🚀 ¡Feliz coding! 😃
+
+### 📢 iconos
+https://fontawesome.com/v4/icons/

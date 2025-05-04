@@ -30,17 +30,16 @@ urlpatterns = [
     path('registro/', inicio_views.registro, name='registro'),
     path('registrar-usuario/', inicio_views.registrar_usuario, name='registrar_usuario'),
     path('panel-usuario/', inicio_views.panel_usuario, name='panel_usuario'),
-
+    path('logout/', inicio_views.logout, name='logout'),
     # ------- Empleados --------
     path('panel-empleado/', empleado_views.panel_empleado, name='panel_empleado'),
     path('login_empleado/', empleado_views.login_empleado, name='login_empleado'),  # Login para usuarios
     path('logout_empleado/', empleado_views.logout_empleado, name='logout_empleado'),
 
-    # Cerrar sesión
-    path('logout/', inicio_views.logout, name='logout'),
+
 
     # ======================= Modulo de regulaciones =======================  
-    path('panel-admin/', regulaciones_views.panel_admin, name='panel_admin'),
+    path('panel-regulaciones/', regulaciones_views.panel_regulaciones, name='panel_regulaciones'),
 
     # Normativas
     path('nueva-normativa/', regulaciones_views.nueva_normativa, name='nueva_normativa'),
