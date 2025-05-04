@@ -1,108 +1,87 @@
-{% load static %}
+﻿{% load static %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel de Regulaciones | Verificentro EDOMEX</title>
+    <title>Responsive Bootstrap Advance Admin Template</title>
 
-    <!-- Estilos Bootstrap -->
+    <!-- BOOTSTRAP STYLES-->
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" />
-    <!-- Iconos FontAwesome -->
+    <!-- FONTAWESOME STYLES-->
     <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" />
-    <!-- Estilos básicos personalizados -->
+    <!--CUSTOM BASIC STYLES-->
     <link href="{% static 'css/basic.css' %}" rel="stylesheet" />
-    <!-- Estilos principales personalizados -->
+    <!--CUSTOM MAIN STYLES-->
     <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
-    <!-- Tipografía -->
+    <!-- GOOGLE FONTS-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="wrapper">
-
-        <!-- Barra superior -->
         <nav class="navbar navbar-default navbar-cls-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
-                <!-- Botón de colapsar para móviles -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Verificentro EDOMEX</a>
+                <a class="navbar-brand" href="#">Verficentro EDOMEX</a>
             </div>
             <div class="header-right">
-                <!-- Botón de salir -->
-                <a href="{% url 'logout_empleado' %}" class="btn btn-danger" title="Salir">
-                    SALIR <i class="fa fa-sign-out fa-2x"></i>
-                </a>
+                <a href="{% url 'logout_empleado' %}" class="btn btn-danger" title="Logout">SALIR <i class="fa fa-exclamation-circle fa-2x"></i></a>
             </div>
         </nav>
 
-        <!-- Menú lateral del empleado -->
+        <!-- INCLUIMOS EL MENÚ -->
         {% include 'menu/Empleado_menu.html' %}
 
-        <!-- Contenido principal -->
         <div id="page-wrapper">
             <div id="page-inner">
-
-                <!-- Encabezado de bienvenida -->
                 <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-head-line">Panel de Empleado</h1>
+                    <div class="col-md-12"
+                        <h1 class="page-head-line">Panel de emplado</h1>
                         <h1 class="page-subhead-line">Bienvenido, {{ request.session.empleado_nombre }}</h1>
                     </div>
                 </div>
-
-                <!-- Primera fila: 3 opciones -->
+                
                 <div class="row">
-                    <!-- Nueva normativa -->
+                    
                     <div class="col-md-4">
                         <div class="main-box mb-red">
-                            <a href="{% url 'nueva_normativa' %}">
-                                <i class="fa fa-gavel fa-5x"></i>
-                                <h5>Nueva Normativa</h5>
+                            <a href="#">
+                                <i class="fa fa-bolt fa-5x"></i>
+                                <h5>Citas</h5>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Consultar normativas -->
                     <div class="col-md-4">
                         <div class="main-box mb-dull">
-                            <a href="{% url 'listar_normativas' %}">
-                                <i class="fa fa-search fa-5x"></i>
-                                <h5>Consultar Normativas</h5>
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Reportes -->
-                    <div class="col-md-4">
-                        <div class="main-box mb-dull">
-                            <a href="{% url 'reportes' %}">
-                                <i class="fa fa-archive fa-5x" aria-hidden="true"></i>
-                                <h5>Generar Reportes</h5>
+                            <a href="#">
+                                <i class="fa fa-plug fa-5x"></i>
+                                <h5>Verificaciones</h5>
                             </a>
                         </div>
                     </div>
 
-
-                    <!-- revision vehicular -->
                     <div class="col-md-4">
-                        <div class="main-box mb-dull">
-                            <a href="{% url 'verificacion_vehicular' %}">
-                                <i class="fa fa-car fa-5x" aria-hidden="true"></i>
-                                <h5>Revisión Vehicular</h5>
+                        <div class="main-box mb-pink">
+                            <a href="#">
+                                <i class="fa fa-dollar fa-5x"></i>
+                                <h5>Multas</h5>
                             </a>
                         </div>
                     </div>
+
+                </div>
 
             </div>
+
         </div>
     </div>
 
-    <!-- Pie de página -->
     <div id="footer-sec">
         &copy; 2025 GOBIERNO DEL ESTADO DE MÉXICO | Design By: <a href="#">TuNombre</a>
     </div>

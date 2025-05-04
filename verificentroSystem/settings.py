@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     #modulos
     'modules.modulo_regulaciones',
+    'modules.panel_usuario',
+    'modules.panel_empleado',
     #otras apps   
     'django.contrib.auth',
     'django.contrib.contenttypes',
