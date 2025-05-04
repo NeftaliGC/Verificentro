@@ -70,7 +70,7 @@ def panel_usuario(request):
     if 'usuario_id' not in request.session:
         return redirect('login')  # Redirige si no hay sesión
 
-    return render(request, 'panel-usuario.html')
+    return render(request, 'panel_usuario.html')
 
 # cerrar sesion
 def logout(request):

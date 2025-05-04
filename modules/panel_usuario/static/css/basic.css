@@ -44,7 +44,7 @@ body {
     color: #000;
     font-weight: 800;
     padding-bottom: 20px;
-    border-bottom: 2px solid #00CA79;
+    border-bottom: 2px solid #ca2c00;
     margin-bottom: 10px;
 }
 
@@ -54,7 +54,7 @@ body {
     padding-bottom: 20px;
     font-style:italic;
     margin-bottom:30px;
-    border-bottom:1px dashed #00CA79;
+    border-bottom:1px dashed #ca4300b6;
 
 }
 
@@ -92,7 +92,7 @@ body {
 .user-img-div {
     min-height: 140px;
     padding: 20px;
-    background-color: #4380B8;
+    background-color: #202020;
 }
 
     .user-img-div img {
@@ -107,9 +107,7 @@ body {
         line-height: 25px;
     }
 
-.active-menu {
-    background-color: #00CA79!important;
-}
+
 .active-menu-top {
     background-color: #000!important;
 }
@@ -184,7 +182,7 @@ body {
 }
 
 .navbar-cls-top {
-    background: #00CA79;
+    background: #7e2408;
     border-bottom: none;
 }
 

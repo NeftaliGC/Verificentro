@@ -34,11 +34,6 @@ urlpatterns = [
     path('panel-usuario/', inicio_views.panel_usuario, name='panel_usuario'),
     path('logout/', inicio_views.logout, name='logout'),
     
-
-
-
-
-    
     # ======================= Modulo de regulaciones =======================  
     path('panel-admin/', regulaciones_views.panel_admin, name='panel_admin'),
 
