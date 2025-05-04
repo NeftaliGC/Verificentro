@@ -1,0 +1,23 @@
+:root {
+	--color-primario: #d10000;
+	--color-hover-primario: #a30000;
+	--color-header: #791e00;
+
+	--color-secundario: #8e3838;
+	--color-alternativo: #757575;
+	--color-hover-alternativo: #616161;
+
+	--fondo-general: #f4f4f4;
+	--fondo-tarjeta: #ffffff;
+	--fondo-como-funciona: #fff0f0;
+	--fondo-faq: #ffecec;
+	--fondo-footer: #793400;
+
+	--color-alerta: #ff0000;
+
+	--texto-claro: white;
+	--texto-oscuro: black;
+
+	--borde-tarjeta: #ddd;
+	--borde-input: #ccc;
+}

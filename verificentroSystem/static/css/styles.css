@@ -4,13 +4,13 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #f4f4f4;
+    background-color: var(--fondo-general);
 }
 
 /* Encabezado */
 header {
-    background-color: #791e00; /* Rojo oscuro */
-    color: white;
+    background-color: var(--color-header);
+    color: var(--texto-claro);
     padding: 10px 0;
 }
 
@@ -29,7 +29,7 @@ header .logo {
 header .logo h1 {
     font-size: 24px;
     margin-left: 10px;
-    color: white;
+    color: var(--texto-claro);
 }
 
 header .logo img {
@@ -51,14 +51,14 @@ header .navigation ul li {
 }
 
 header .navigation ul li a {
-    color: white;
+    color: var(--texto-claro);
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s;
 }
 
 header .navigation ul li a:hover {
-    color: #ff0000; /* Rojo al pasar el ratón */
+    color: var(--color-alerta);
 }
 
 /* Estilo de los botones */
@@ -77,13 +77,13 @@ header .btn {
 }
 
 header .login-btn {
-    background-color: #d10000; /* Rojo para el login */
-    color: white;
+    background-color: var(--color-primario);
+    color: var(--texto-claro);
 }
 
 header .appointment-btn {
-    background-color: #8e3838; /* Rojo oscuro para agendar cita */
-    color: white;
+    background-color: var(--color-secundario);
+    color: var(--texto-claro);
 }
 
 header .btn:hover {
@@ -92,8 +92,8 @@ header .btn:hover {
 
 /* Footer */
 footer {
-    background-color: #793400;
-    color: white;
+    background-color: var(--fondo-footer);
+    color: var(--texto-claro);
     text-align: center;
     padding: 10px;
     width: -webkit-fill-available;
@@ -114,7 +114,7 @@ main {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: black;
+    color: var(--texto-oscuro);
 }
 
 .hero-content h1 {
@@ -128,8 +128,8 @@ main {
 }
 
 .btn-primary {
-    background-color: #d10000; /* Botón rojo */
-    color: white;
+    background-color: var(--color-primario);
+    color: var(--texto-claro);
     padding: 12px 24px;
     border: none;
     border-radius: 5px;
@@ -138,13 +138,13 @@ main {
 }
 
 .btn-primary:hover {
-    background-color: #a30000;
+    background-color: var(--color-hover-primario);
 }
 
 /* Beneficios */
 .benefits {
     padding: 50px 20px;
-    background-color: #ffffff; /* Blanco */
+    background-color: var(--fondo-tarjeta);
     text-align: center;
 }
 
@@ -155,10 +155,10 @@ main {
 }
 
 .card {
-    background-color: white;
+    background-color: var(--fondo-tarjeta);
     padding: 20px;
     width: 30%;
-    border: 1px solid #ddd;
+    border: 1px solid var(--borde-tarjeta);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -175,7 +175,7 @@ main {
 .how-to {
     padding: 40px 20px;
     text-align: center;
-    background-color: #fff0f0; /* Blanco rosado suave */
+    background-color: var(--fondo-como-funciona);
 }
 
 .process {
@@ -202,22 +202,22 @@ main {
 .faq {
     padding: 50px 20px;
     text-align: center;
-    background-color: #ffecec; /* Fondo muy claro rojizo */
+    background-color: var(--fondo-faq);
 }
 
 .faq details {
-    background-color: white;
+    background-color: var(--fondo-tarjeta);
     padding: 10px;
     margin: 10px auto 20px;
     width: 60%;
-    border: 1px solid #ddd;
+    border: 1px solid var(--borde-tarjeta);
     border-radius: 5px;
     cursor: pointer;
 }
 
 /* Estilos para el formulario de login */
 .login {
-    background-color: #f4f4f4;
+    background-color: var(--fondo-general);
     padding: 40px 20px;
     text-align: center;
 }
@@ -228,11 +228,11 @@ main {
 }
 
 form {
-    background-color: white;
+    background-color: var(--fondo-tarjeta);
     width: 60%;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--borde-tarjeta);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -251,7 +251,7 @@ form {
 .form-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--borde-input);
     border-radius: 5px;
 }
 
@@ -267,21 +267,11 @@ form {
     text-align: center;
 }
 
-.btn-primary {
-    background-color: #d10000;
-    color: white;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #a30000;
-}
-
 .btn-secondary {
-    background-color: #757575;
-    color: white;
+    background-color: var(--color-alternativo);
+    color: var(--texto-claro);
 }
 
 .btn-secondary:hover {
-    background-color: #616161;
+    background-color: var(--color-hover-alternativo);
 }

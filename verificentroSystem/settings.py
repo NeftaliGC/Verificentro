@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     #modulos
     'modules.modulo_regulaciones',
+    'modules.modulo_pagos',
     #otras apps   
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,12 +82,20 @@ WSGI_APPLICATION = 'verificentroSystem.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'verificentro2',
-        'USER': 'ramiro',
-        'PASSWORD': 'ramiro54',  
+        'NAME': 'dev_finanzas',
+        'USER': 'finanzas',
+        'PASSWORD': 'FinanzasDEF',
         'HOST': 'localhost',
         'PORT': '5432',
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'verificentro2',
+    #     'USER': 'ramiro',
+    #     'PASSWORD': 'ramiro54',  
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
 }
 
 # Password validation
