@@ -8,27 +8,16 @@ tipo_pago.addEventListener("change", function () {
         tit.scrollIntoView({ behavior: "smooth" });
     }
 
-    if (tipo_pago.value == "efectivo_verificentro") {
+    // Ocultar todos los elementos de pago
+    const allPaymentElements = document.querySelectorAll("[id^='efectivo'], [id='tarjeta']");
+    allPaymentElements.forEach(element => {
+        element.style.display = "none";
+    });
 
-        document.getElementById("efectivo_verificentro").style.display = "block";
-        document.getElementById("efectivo_banco").style.display = "none";
-        document.getElementById("tarjeta").style.display = "none";
-
-    } else if (tipo_pago.value == "efectivo_banco") {
-
-        document.getElementById("efectivo_banco").style.display = "block";
-        document.getElementById("efectivo_verificentro").style.display = "none";
-        document.getElementById("tarjeta").style.display = "none";
-
-    } else if (tipo_pago.value == "tarjeta") {
-
-        document.getElementById("tarjeta").style.display = "block";
-        document.getElementById("efectivo_verificentro").style.display = "none";
-        document.getElementById("efectivo_banco").style.display = "none";
-
-    } else {
-        document.getElementById("efectivo_verificentro").style.display = "none";
-        document.getElementById("efectivo_banco").style.display = "none";
-        document.getElementById("tarjeta").style.display = "none";
+    // Mostrar el elemento correspondiente según el valor seleccionado
+    const selectedPaymentElement = document.getElementById(tipo_pago.value);
+    if (selectedPaymentElement) {
+        selectedPaymentElement.style.display = "block";
     }
 });
+
