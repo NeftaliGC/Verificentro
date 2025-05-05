@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     #modulos
     'modules.modulo_regulaciones',
     'modules.modulo_pagos',
+    'modules.panel_usuario',
+    'modules.panel_empleado',
     #otras apps   
     'django.contrib.auth',
     'django.contrib.contenttypes',

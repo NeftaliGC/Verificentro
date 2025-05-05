@@ -21,7 +21,7 @@ from .models import Normativa, Vehiculo, Verificacion, Multa
 
 # ======================= VISTAS PRINCIPALES =======================
 
-def panel_admin(request):
+def panel_regulaciones(request):
     return render(request, 'principalRegulaciones.html')
 
 # ======================= CRUD Normativas =======================

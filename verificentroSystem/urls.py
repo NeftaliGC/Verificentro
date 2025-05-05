@@ -16,18 +16,30 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from modules.inicio import views
+from modules.inicio import views as inicio_views
+from modules.panel_empleado import views as empleado_views
 from modules.modulo_regulaciones import views as regulaciones_views
 
-
 urlpatterns = [
-
-    # Rutas principales
+    # ======================= Rutas principales =======================
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('login/', views.login, name='login'),
-    path('registro/', views.registro, name='registro'),
-    path('panel-admin/', regulaciones_views.panel_admin, name='panel_admin'),
+    path('', inicio_views.home, name='home'),
+
+    # ------- Usuarios --------
+    path('login/', inicio_views.login_usuario, name='login'),  # Login para usuarios
+    path('registro/', inicio_views.registro, name='registro'),
+    path('registrar-usuario/', inicio_views.registrar_usuario, name='registrar_usuario'),
+    path('panel-usuario/', inicio_views.panel_usuario, name='panel_usuario'),
+    path('logout/', inicio_views.logout, name='logout'),
+    # ------- Empleados --------
+    path('panel-empleado/', empleado_views.panel_empleado, name='panel_empleado'),
+    path('login_empleado/', empleado_views.login_empleado, name='login_empleado'),  # Login para usuarios
+    path('logout_empleado/', empleado_views.logout_empleado, name='logout_empleado'),
+
+
+
+    # ======================= Modulo de regulaciones =======================  
+    path('panel-regulaciones/', regulaciones_views.panel_regulaciones, name='panel_regulaciones'),
 
     # Normativas
     path('nueva-normativa/', regulaciones_views.nueva_normativa, name='nueva_normativa'),
@@ -47,4 +59,5 @@ urlpatterns = [
     # Pagos / Finanzas
     path('pagos/', include('modules.modulo_pagos.urls'))
 
+    # ======================= Modulo de gobierno =======================
 ]

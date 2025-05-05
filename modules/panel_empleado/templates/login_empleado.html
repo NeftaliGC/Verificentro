@@ -1,0 +1,24 @@
+{% extends 'Empleado_base.html' %}
+
+{% block title %}Login Empleado - Sistema de Verificación Vehicular{% endblock %}
+
+{% block content %}
+<section class="login">
+    <h2>Iniciar Sesión (Empleado)</h2>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="numero_cuenta">Número de Cuenta:</label>
+            <input type="text" id="numero_cuenta" name="numero_cuenta" placeholder="Ej: 1234567890" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="" required>
+        </div>
+
+        <button type="submit" class="btn-primary">Iniciar Sesión</button>
+    </form>
+</section>
+{% endblock %}

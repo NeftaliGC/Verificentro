@@ -1,0 +1,24 @@
+{% load static %}
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li>
+                <div class="user-img-div">
+                    <img src="{% static 'img/Usuario-Icono.jpg' %}" class="img-thumbnail" />
+                    <div class="inner-text">
+                        {{ request.session.empleado_nombre }}
+                        <br />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="active-menu" href="{% url 'panel_empleado' %}"><i class="fa fa-dashboard "></i>Panel de Empleado</a>
+            </li>
+            <li>
+                <a href="{% url 'panel_regulaciones' %}"><i class="fa fa-car" aria-hidden="true"></i> Gestion verificacion</a>
+                <a href="#"><i class="fa fa-cogs" aria-hidden="true"></i>Configuración</a>
+                
+            </li>
+        </ul>
+    </div>
+</nav>
