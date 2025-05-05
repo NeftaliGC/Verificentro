@@ -44,7 +44,7 @@ def registrar_usuario(request):
 
     return render(request, 'registro.html')
 
- #login usuario
+#login usuario
 def login_usuario(request):  # <-- nuevo nombre
     if request.method == 'POST':
         correo = request.POST.get('username')
