@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pagos - Sistema de Verificación Vehicular{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pagos.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Elige el tipo de pago que deseas realizar</h2>
+<div class="pagos-container">
+    <div class="pago-opcion">
+        <a href="./pagar/verificacion/">
+            <img src="{% static 'img/pagar_verificacion.webp' %}" alt="Pago Verificación" class="pago-imagen">
+            <h3>Pago de Verificación</h3>
+        </a>
+    </div>
+    <div class="pago-opcion">
+        <a href="./pagar/multa/">
+            <img src="{% static 'img/pagar_multa.webp' %}" alt="Pago Multa" class="pago-imagen">
+            <h3>Pago de Multas</h3>
+        </a>
+    </div>
+
+</div>
+{% endblock %}

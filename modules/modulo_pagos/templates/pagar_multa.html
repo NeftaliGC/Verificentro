@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pagars- Sistema de Verificación Vehicular{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pagos.css' %}">
+{% endblock %}
+{% block content %}
+<h2>Pagar Multa</h2>
+
+<div class="pagar-banner">
+    <img src="{% static 'img/pagar_multa.webp' %}" alt="pagar verificacion">
+</div>
+
+<div class="pagar-container">
+    <!-- Selector de pago -->
+    <div>
+        <label for="pago-select">Selecciona una multa:</label>
+        <select id="pago-select" name="pago">
+            <option value="">-- Selecciona un pago --</option>
+            <!-- Opciones dinámicas a llenar desde JS o servidor -->
+            
+        </select>
+    </div>
+
+    <!-- Información del pago seleccionada -->
+    <div class="pago-detalles">
+        <p><strong>Monto a pagar:</strong> <span id="monto-label">$0.00</span></p>
+        <p><strong>Fecha de multa:</strong> <span id="fecha-label">---</span></p>
+        <p><strong>Fecha limite:</strong> <span id="limite">---</span></p>
+    </div>
+
+    <!-- Selector de tipo de pago -->
+    <div class="tipo-pago-container">
+        <label for="tipo-pago-select">Selecciona el tipo de pago:</label>
+        <select id="tipo-pago-select" name="tipo_pago">
+            <option value="">-- Selecciona el tipo de pago --</option>
+            <option value="efectivo_banco">Efectivo en depósito bancario</option>
+            <option value="tarjeta">Pago con tarjeta</option>
+        </select>
+    </div>
+</div>
+
+<div class="pagar-container">
+
+    <h3 id="info-pago">Información de pago:</h3>
+    <div class="pago-informacion-container">
+        <p class="divisor">-------</p>
+        
+        <div id="efectivo_banco">
+            <p><strong>Instrucciones:</strong></p>
+            <p>Realiza el pago en el banco y guarda tu recibo.</p>
+            <p>Tu pago se realizara automaticamente</p>
+            
+            <p>Descarga esta referencia para pagar</p>
+            <a href="#" class="btn btn-primary">Descargar referencia</a>
+        </div>
+        
+        <div id="tarjeta">
+            <p><strong>Instrucciones:</strong></p>
+            <p>Realiza el pago con tarjeta de crédito o débito.</p>
+            <p>Tu pago se realizara automaticamente</p>
+            
+            <form id="tarjeta-form" action="#" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre-titular">Nombre del titular:</label>
+                    <input type="text" id="nombre-titular" name="nombre_titular" required>
+                    <label for="numero-tarjeta">Numero de tarjeta</label>
+                    <input type="text" id="numero-tarjeta" name="numero_tarjeta" required>
+                    <label for="fecha-expiracion">Fecha de expiración:</label>
+                    <input type="text" id="fecha-expiracion" name="fecha_expiracion" placeholder="MM/AA" required>
+                    <label for="codigo-seguridad">Código de seguridad:</label>
+                    <input type="text" id="codigo-seguridad" name="codigo_seguridad" required>
+                    <label for="monto">Monto a pagar:</label>
+                    <input type="text" id="monto" name="monto" value="$0.00" readonly>
+                </div>
+                
+                <button id="pagar-button" class="btn btn-primary" >Pagar</button>
+            </form>
+        </div>
+        
+        <p class="divisor">-------</p>
+    </div>
+    
+</div>
+
+<div class="pagar-container">
+    <button type="button" id="continuar-btn" class="btn btn-primary">Continuar</button>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/pago_informacion.js' %}"></script>
+{% endblock %}
+

@@ -22,6 +22,12 @@
         <button type="submit" class="btn-primary">Iniciar Sesión</button>
     </form>
 
+    {% if error %}
+        <div class="error-message">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
     <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Regístrate</a></p>
 </section>
 {% endblock %}

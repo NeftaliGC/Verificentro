@@ -1,0 +1,9 @@
+{% extends '404.html' %}
+
+{% block tipe_error %}
+    El tipo de pago que buscas no existe
+{% endblock %}
+
+{% block redireccionamiento %}
+    <a href="{% url 'pagos' %}" class="btn-regresar">Visita nuestra pagina de Pagos</a>
+{% endblock %}

@@ -1,0 +1,100 @@
+h2 {
+	font-size: xx-large;
+	text-align: center;
+	color: var(--color-header);
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.pagar-banner {
+	padding: 1rem;
+	text-align: center;
+}
+
+.pagar-banner img {
+	width: 15%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 12px;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pagos-container {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	flex-wrap: wrap;
+	padding: 1rem;
+}
+
+.pago-opcion {
+	background-color: var(--fondo-tarjeta);
+	border: 1px solid var(--borde-tarjeta);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	width: 30rem;
+	text-align: center;
+	cursor: pointer;
+}
+
+.pago-opcion:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-color: var(--color-hover-primario);
+}
+
+.pago-opcion a {
+	color: var(--texto-oscuro);
+	text-decoration: none;
+	display: block;
+	padding: 1rem;
+}
+
+.pago-imagen {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-bottom: 1px solid var(--borde-tarjeta);
+}
+
+.pago-opcion h3 {
+	margin-top: 1rem;
+	font-size: 1.1rem;
+}
+
+.pagar-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 2rem;
+	flex-wrap: wrap;
+	padding: 1rem;
+}
+
+.pago-informacion-container {
+	background-color: var(--fondo-tarjeta);
+	border: 1px solid var(--borde-tarjeta);
+	border-radius: 12px;
+	padding: 2rem;
+	width: 50%;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	cursor: pointer;
+}
+
+#efectivo_verificentro {
+	display: none;
+}
+
+#efectivo_banco {
+	display: none;
+}
+
+#tarjeta {
+	display: none;
+}
+
+.divisor {
+	text-align: center;
+	margin: 0;
+}

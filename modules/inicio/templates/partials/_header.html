@@ -10,10 +10,26 @@
         <nav class="navigation">
             <ul>
                 <li><a href="/">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Servicios</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/pagos">Pagos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Información</a></li>
+                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="/login"><button class="btn login-btn">Iniciar sesion</button></a>
+            {% if user.is_authenticated %}
+            <span class="user">Bienvenido, {{ user.username }}</span>
+            <form class="logout-form" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn logout-btn">Cerrar sesión</button>
+            </form>
+            {% else %}
+                <a href="{% url 'login' %}"><button class="btn login-btn">Iniciar sesión</button></a>
+            {% endif %}
         </div>
     </div>
 </header>
