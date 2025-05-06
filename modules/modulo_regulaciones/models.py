@@ -1,4 +1,4 @@
-from django.db import models
+""" from django.db import models
 
 # Create your models here.
 from django.db import models
@@ -60,3 +60,4 @@ class Multa(models.Model):
 
     def __str__(self):
         return f"Multa para {self.vehiculo.placa} - {self.monto} MXN"
+ """

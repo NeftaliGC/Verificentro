@@ -123,7 +123,12 @@ header .dropdown-menu li a:hover {
     color: var(--color-alerta);
 }
 
-
+header .user {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    gap: 10px;
+}
 
 /* Footer */
 footer {
@@ -309,4 +314,10 @@ form {
 
 .btn-secondary:hover {
     background-color: var(--color-hover-alternativo);
+}
+
+
+header .logout-form {
+    display: inline-block;
+    padding: 0;
 }

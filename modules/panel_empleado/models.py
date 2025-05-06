@@ -9,7 +9,7 @@ class Empleado(models.Model):
     fecha_nacimiento = models.DateField()
     correo_personal = models.EmailField(unique=True)
     telefono = models.CharField(max_length=20)
-    contraseña = models.CharField(max_length=128)  # Idealmente usar hash
+    contrasena = models.CharField(max_length=128)  # Idealmente usar hash
     rol = models.CharField(max_length=50)  # Ejemplo: 'administrador', 'empleado', etc.
     numero_cuenta = models.CharField(max_length=30)  # Puedes ajustar el tamaño según el formato
 

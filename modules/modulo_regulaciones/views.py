@@ -1,4 +1,4 @@
-# Librerías estándar
+""" # Librerías estándar
 from datetime import date, datetime
 from decimal import Decimal
 
@@ -255,3 +255,4 @@ def agregar_numero_pagina(canvas, doc):
     page_number_text = f"Página {doc.page}"
     canvas.drawRightString(200 * mm, 15 * mm, page_number_text)
     canvas.restoreState()
+ """

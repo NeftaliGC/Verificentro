@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from .models import Usuario
 from django.contrib import messages
 
@@ -6,9 +7,6 @@ from django.contrib import messages
 # vistas principales
 def home(request):
     return render(request, 'home.html')
-
-def login(request):
-    return render(request, 'login.html')
 
 def registro(request):
     return render(request, 'registro.html')
@@ -48,19 +46,15 @@ def registrar_usuario(request):
 def login_usuario(request):  # <-- nuevo nombre
     if request.method == 'POST':
         correo = request.POST.get('username')
-        contraseña = request.POST.get('password')
+        contrasena = request.POST.get('password')
 
-        try:
-            usuario = Usuario.objects.get(correo=correo)
-            if usuario.contraseña == contraseña:
-                request.session['usuario_id'] = usuario.id
-                request.session['usuario_nombre'] = usuario.nombre
-                messages.success(request, f'¡Bienvenido, {usuario.nombre}!')
-                return redirect('panel_usuario')  # <- ¡Usa guión bajo!
-            else:
-                messages.error(request, 'Contraseña incorrecta.')
-        except Usuario.DoesNotExist:
-            messages.error(request, 'Correo no registrado.')
+        user = authenticate(request, email=correo, password=contrasena)
+
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            return render(request, 'login.html', {'error': 'Credenciales inválidas.'})
 
     return render(request, 'login.html')
 
