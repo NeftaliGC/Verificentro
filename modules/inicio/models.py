@@ -81,7 +81,6 @@ class Normativa(models.Model):
 class Verificacion(models.Model):
     id = models.AutoField(primary_key=True)
     placa = models.ForeignKey(Vehiculo, to_field='placa', on_delete=models.CASCADE)
-    id_cita = models.ForeignKey(Cita, on_delete=models.CASCADE)
     fecha = models.DateField()
     co_emitido = models.DecimalField(max_digits=6, decimal_places=2)
     nox_emitido = models.DecimalField(max_digits=6, decimal_places=2)

@@ -6,11 +6,11 @@ from django.contrib import messages
 def login_empleado(request):
     if request.method == 'POST':
         numero_cuenta = request.POST.get('numero_cuenta')
-        contraseña = request.POST.get('password')
+        contrasena = request.POST.get('password')
 
         try:
             empleado = Empleado.objects.get(numero_cuenta=numero_cuenta)
-            if empleado.contraseña == contraseña:
+            if empleado.contrasena == contrasena:
                 request.session['empleado_id'] = empleado.id
                 request.session['empleado_nombre'] = empleado.nombre
                 messages.success(request, f'¡Bienvenido, {empleado.nombre}!')

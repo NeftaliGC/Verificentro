@@ -1,4 +1,4 @@
-""" # Librerías estándar
+# Librerías estándar
 from datetime import date, datetime
 from decimal import Decimal
 
@@ -17,7 +17,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch, mm
 
 # Locales
-from .models import Normativa, Vehiculo, Verificacion, Multa
+from modules.inicio.models import Normativa, Vehiculo, Verificacion
 
 # ======================= VISTAS PRINCIPALES =======================
 
@@ -85,9 +85,9 @@ def eliminar_normativa(request, pk):
     return render(request, 'eliminar_normativa.html', {'normativa': normativa})
 
 # ======================= Verificación Vehicular =======================
-
 def verificacion_vehicular(request):
     resultado = None
+    datos_verificacion = None
 
     if 'placa' in request.GET:
         placa = request.GET['placa'].upper().strip()
@@ -102,19 +102,26 @@ def verificacion_vehicular(request):
 
             if normativa:
                 try:
-                    co_medido = Decimal(request.GET.get('co_medido'))
-                    nox_medido = Decimal(request.GET.get('nox_medido'))
-                    obd_funciona = request.GET.get('obd_funciona') == 'true'
+                    co_medido = Decimal(request.GET.get('co_medido', 0))
+                    nox_medido = Decimal(request.GET.get('nox_medido', 0))
+                    obd_funciona = request.GET.get('obd_funciona', 'false') == 'true'
                 except (ValueError, TypeError) as e:
-                    resultado = f"⚠️ Error al procesar los valores de las emisiones: {e}"
-                    return render(request, 'verificacion_vehicular.html', {'resultado': resultado})
+                    resultado = f"⚠️ Error al procesar los valores de las emisiones: {str(e)}"
+                    return render(request, 'verificacion_vehicular.html', {
+                        'resultado': resultado,
+                        'vehiculo': vehiculo
+                    })
 
+                # Actualizar valores medidos en el vehículo
                 vehiculo.co_medido = co_medido
                 vehiculo.nox_medido = nox_medido
                 vehiculo.save()
 
+
+                # Crear registro de verificación
                 verificacion = Verificacion.objects.create(
-                    vehiculo=vehiculo,
+                    placa=vehiculo,
+                    fecha=date.today(),
                     co_emitido=co_medido,
                     nox_emitido=nox_medido,
                     obd_funciona=obd_funciona,
@@ -122,30 +129,39 @@ def verificacion_vehicular(request):
                     aprobada=False
                 )
 
-                cumple = (
-                    co_medido <= normativa.limite_co and
-                    nox_medido <= normativa.limite_nox and
-                    obd_funciona == normativa.usa_obd
-                )
+                # Evaluar si cumple con la normativa
+                cumple_co = co_medido <= normativa.limite_co
+                cumple_nox = nox_medido <= normativa.limite_nox
+                cumple_obd = obd_funciona == normativa.usa_obd
+                cumple = cumple_co and cumple_nox and cumple_obd
 
                 verificacion.aprobada = cumple
                 verificacion.save()
 
-                if not cumple:
-                    Multa.objects.create(
-                        vehiculo=vehiculo,
-                        verificacion=verificacion,
-                        monto=Decimal('1500.00'),
-                        motivo="Exceso de emisiones de CO o NOx, o mal funcionamiento de OBD."
-                    )
+                # Preparar datos para mostrar
+                datos_verificacion = {
+                    'vehiculo': vehiculo,
+                    'normativa': normativa,
+                    'co_medido': co_medido,
+                    'nox_medido': nox_medido,
+                    'obd_funciona': obd_funciona,
+                    'cumple_co': cumple_co,
+                    'cumple_nox': cumple_nox,
+                    'cumple_obd': cumple_obd,
+                    'aprobado': cumple,
+                    'fecha': date.today().strftime('%d/%m/%Y')
+                }
 
-                resultado = '✅ Aprobado' if cumple else '❌ Rechazado - Multa generada'
+                resultado = '✅ Aprobado' if cumple else '❌ Rechazado'
             else:
                 resultado = '⚠️ No hay normativa aplicable al vehículo.'
         except Vehiculo.DoesNotExist:
             resultado = '🚫 Vehículo no encontrado.'
 
-    return render(request, 'verificacion_vehicular.html', {'resultado': resultado})
+    return render(request, 'verificacion_vehicular.html', {
+        'resultado': resultado,
+        'datos': datos_verificacion
+    })
 
 # ======================= Reportes =======================
 
@@ -162,37 +178,6 @@ def reporte_vehiculos_aprobados(request):
 def reporte_vehiculos_rechazados(request):
     return generar_reporte_verificaciones(request, False, 'vehiculos_rechazados.pdf', "Reporte de Vehículos Rechazados")
 
-# === Reporte: Multas Generadas ===
-
-def reporte_multas_generadas(request):
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="multas_generadas.pdf"'
-
-    doc = SimpleDocTemplate(response, pagesize=letter)
-    elements = []
-    styles = getSampleStyleSheet()
-
-    agregar_encabezado_reporte(elements, "Reporte de Multas Generadas")
-
-    multas = Multa.objects.all()
-
-    if not multas.exists():
-        elements.append(Paragraph("No hay multas registradas.", styles['Normal']))
-    else:
-        data = [['Placa', 'Monto (MXN)', 'Motivo', 'Fecha']]
-        for multa in multas:
-            data.append([
-                multa.vehiculo.placa,
-                f"{multa.monto:.2f}",
-                multa.motivo,
-                multa.fecha.strftime("%d/%m/%Y")
-            ])
-
-        tabla_reporte(elements, data, encabezado_color='#B22222')
-
-    doc.build(elements, onFirstPage=agregar_numero_pagina, onLaterPages=agregar_numero_pagina)
-    return response
-
 # ======================= Funciones auxiliares para reportes =======================
 
 def generar_reporte_verificaciones(request, aprobadas, filename, titulo):
@@ -205,15 +190,22 @@ def generar_reporte_verificaciones(request, aprobadas, filename, titulo):
 
     agregar_encabezado_reporte(elements, titulo)
 
-    verificaciones = Verificacion.objects.filter(aprobada=aprobadas)
+    verificaciones = Verificacion.objects.filter(aprobada=aprobadas).select_related('placa')
 
     if not verificaciones.exists():
         elements.append(Paragraph("No hay vehículos registrados.", styles['Normal']))
     else:
-        data = [['Placa', 'Marca', 'Modelo', 'Año']]
+        data = [['Placa', 'Marca', 'Modelo', 'Año', 'CO', 'NOx', 'Fecha']]
         for verificacion in verificaciones:
-            vehiculo = verificacion.vehiculo
-            data.append([vehiculo.placa, vehiculo.marca, vehiculo.modelo, vehiculo.anio])
+            data.append([
+                verificacion.placa.placa,
+                verificacion.placa.marca,
+                verificacion.placa.modelo,
+                str(verificacion.placa.anio),
+                f"{verificacion.co_emitido} ppm",
+                f"{verificacion.nox_emitido} ppm",
+                verificacion.fecha.strftime('%d/%m/%Y')
+            ])
 
         tabla_reporte(elements, data)
 
@@ -243,9 +235,10 @@ def tabla_reporte(elements, data, encabezado_color='#004aad'):
         ('ALIGN', (0,0), (-1,-1), 'CENTER'),
         ('GRID', (0,0), (-1,-1), 0.5, colors.black),
         ('FONTNAME', (0,0), (-1,0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0,0), (-1,-1), 11),
+        ('FONTSIZE', (0,0), (-1,-1), 10),
         ('BOTTOMPADDING', (0,0), (-1,0), 12),
         ('BACKGROUND', (0,1), (-1,-1), colors.whitesmoke),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.whitesmoke]),
     ]))
     elements.append(table)
 
@@ -255,4 +248,3 @@ def agregar_numero_pagina(canvas, doc):
     page_number_text = f"Página {doc.page}"
     canvas.drawRightString(200 * mm, 15 * mm, page_number_text)
     canvas.restoreState()
- """

@@ -90,14 +90,6 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'verificentro2',
-    #     'USER': 'ramiro',
-    #     'PASSWORD': 'ramiro54',  
-    #     'HOST': 'localhost',
-    #     'PORT': '5432',
-    # }
 }
 
 # Password validation
